@@ -1,0 +1,40 @@
+.dashboard {
+  overflow: hidden;
+  padding: 4rem;
+  background-color: #f5f8fe;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.dashboard__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard__heading p {
+  color: #757575;
+  margin-top: 0.5rem;
+}
+
+.dashboard__heading h2 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Invoice */
+.dashboard__invoice{
+  box-sizing: border-box;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0 1rem;
+}
+
+.dashboard__invoice:nth-child(3){
+  font-weight: 600;
+}
+
+.dashboard__invoice:nth-child(2n){
+  background-color: white;
+}

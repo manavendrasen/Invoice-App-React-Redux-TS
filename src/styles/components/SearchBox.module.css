@@ -1,0 +1,25 @@
+.searchBox{
+	position: relative;
+}
+
+.searchBox__field {
+	width: 100%;
+	padding: 0.5rem;
+	border-radius: 4px;
+	outline: none;
+	border: 2px solid #ccc;
+	padding-left: 30px;
+	margin: 0.5rem 0;
+}
+
+.searchBox__field:focus {
+	border: 2px solid #7B61FF;
+}
+
+.searchBox__icon{
+	color: #ccc;
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+}
