@@ -5,6 +5,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 I used Figma to make a prototype of the app,
 Link: https://www.figma.com/file/Fwoz5LBaAoghRneupbsozq/Invoice?node-id=0%3A1
 
+### Project Preview
+
+![image](https://user-images.githubusercontent.com/26283488/123274508-3254fe00-d521-11eb-8d19-be34986e423e.png)
+
+![image](https://user-images.githubusercontent.com/26283488/123274559-40a31a00-d521-11eb-9cef-8748414daac7.png)
+
+![image](https://user-images.githubusercontent.com/26283488/123274619-4e589f80-d521-11eb-9669-6e73a1e4ac88.png)
+
 ## Project Setup
 
 ```bash
