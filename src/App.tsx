@@ -14,6 +14,7 @@ const App = () => {
         <Route path="/" exact component={Dashboard} />
         <Route path="/new" exact component={InvoiceForm} />
         <Route path="/invoice/:id" exact component={InvoiceDetails} />
+
       </Switch>
     </Router>
   )

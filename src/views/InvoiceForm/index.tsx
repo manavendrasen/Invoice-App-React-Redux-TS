@@ -1,11 +1,14 @@
 
 import { nanoid } from 'nanoid'
 import { useForm, useFieldArray, useWatch, Control } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useAppDispatch } from '../../app/hooks'
 import { createInvoice, Invoice } from '../../features/invoice/invoiceSlice';
 
+// styles
+import styles from '../../styles/views/Form.module.css'
+import { Button } from '../../components'
 
-export default function InvoiceForm() {
+const InvoiceForm = () => {
 
 	// initializing the total for the invoice to be 0
 	let total: number = 0;
@@ -47,25 +50,44 @@ export default function InvoiceForm() {
 		}
 		alert(JSON.stringify(sendData, null, 2))
 		dispatch(createInvoice(sendData));
+		window.location.href = "/";
 	};
 
 	return (
-		<div>
+		<div className={styles.formPage}>
+			<h2>New Invoice</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<input required {...register("customerName")} placeholder="Customer Name" />
-				<input required {...register("customerEmail")} placeholder="Customer Email" />
-				<input required {...register("issued")} placeholder="Issued On" type="date" />
-				<input required {...register("due")} placeholder="Due Date" type="date" />
+				<label>
+					Customer Name
+					<input required {...register("customerName")} placeholder="Customer Name" />
+				</label>
+
+				<label htmlFor="customerEmail">
+					Customer Email
+					<input required {...register("customerEmail")} placeholder="Customer Email" />
+				</label>
+
+				<div className={styles.form__input_container}>
+
+					<label htmlFor="issued">
+						Issued On
+						<input required {...register("issued")} placeholder="Issued On" type="date" />
+					</label>
+
+					<label htmlFor="due">
+						Due Date
+						<input required {...register("due")} placeholder="Due Date" type="date" />
+					</label>
+				</div>
 				{fields.map((field, index) => {
 					return (
 						<div key={field.id}>
-							<section key={field.id}>
+							<section className={styles.form__item_field} key={field.id}>
 								<input
 									placeholder="itemName"
 									{...register(`items.${index}.itemName` as const, {
 										required: true
 									})}
-									className={errors?.items?.[index]?.itemName ? "error" : ""}
 									defaultValue={field.itemName}
 								/>
 								<input
@@ -88,23 +110,15 @@ export default function InvoiceForm() {
 
 									defaultValue={field.price}
 								/>
-								<button type="button" onClick={() => remove(index)}>
-									DELETE
-								</button>
+								<Button onClick={() => remove(index)}>
+									Delete Item
+								</Button>
 							</section>
 						</div>
 					);
 				})}
-				<select required {...register("status")} >
-					<option value="Paid">Paid</option>
-					<option value="Pending">Pending</option>
-					<option value="Late">Late</option>
-				</select>
-				<textarea required {...register("note")} placeholder="Notes" />
-				<Total control={control} />
 
-				<button
-					type="button"
+				<Button
 					onClick={() =>
 						append({
 							itemName: "",
@@ -113,12 +127,24 @@ export default function InvoiceForm() {
 						})
 					}
 				>
-					APPEND
-				</button>
+					Add Item
+				</Button>
+				<label htmlFor="status">
+					Status
+					<select required {...register("status")} >
+						<option value="Paid">Paid</option>
+						<option value="Pending">Pending</option>
+						<option value="Late">Late</option>
+					</select>
+				</label>
+
+				<textarea required {...register("note")} placeholder="Notes" />
+				<Total control={control} />
+
 				<input type="submit" />
 			</form>
-		</div>
+		</div >
 	);
 }
 
-// export default InvoiceForm
+export default InvoiceForm
